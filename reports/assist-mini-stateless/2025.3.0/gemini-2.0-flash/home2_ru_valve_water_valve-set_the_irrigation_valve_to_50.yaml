@@ -1,0 +1,122 @@
+---
+uuid: 3d4d2268-4e3c-4c21-bae5-615d89ccee2d
+task_id: home2_ru_valve_water_valve-set_the_irrigation_valve_to_50
+model_id: null
+category: valve
+task:
+  input_text: set the irrigation valve to 50%
+  expect_changes:
+    valve.irrigation_valve:
+      state: open
+      attributes:
+        current_position: 50
+response: OK. I've set the Irrigation Valve to 50%.
+context:
+  unexpected_states: {}
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: set the irrigation valve to 50%
+      context:
+        id: 01JNWE0KFWE8QS4PXFH8JW5WHY
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          Current time is 19:08:40. Today's date is 2025-03-08.
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          An overview of the areas and the devices in this smart home:
+          - names: Irrigation Valve
+            domain: valve
+            areas: Front yard
+          - names: Irrigation Valve Meter-reading
+            domain: sensor
+            areas: Front yard
+          - names: Irrigation Valve Battery
+            domain: sensor
+            areas: Front yard
+      - role: user
+        content: set the irrigation valve to 50%
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: ''
+        tool_calls:
+        - tool_name: HassSetPosition
+          tool_args:
+            position: 50
+            name: Irrigation Valve
+            domain:
+            - valve
+          id: 01JNWE0M5P26XNV90Q1RR3SM14
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 01JNWE0M5P26XNV90Q1RR3SM14
+        tool_name: HassSetPosition
+        tool_result:
+          speech: {}
+          response_type: action_done
+          data:
+            targets: []
+            success:
+            - name: Irrigation Valve
+              type:
+              - entity
+              id: valve.irrigation_valve
+            failed: []
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: OK. I've set the Irrigation Valve to 50%.
+        tool_calls: null
+      tools:
+      - name: HassTurnOn
+        description: Turns on/opens a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''tv'', ''speaker'', ''receiver'', ''outlet'', ''switch''])],
+          msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''tv'', ''speaker'', ''receiver'', ''outlet'', ''switch''])],
+          msg=None)}'
+      - name: HassSetPosition
+        description: Sets the position of a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window''])], msg=None), ''position'': All(Coerce(int, msg=None), Range(min=0,
+          max=100, min_included=True, max_included=True, msg=None), msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x7f9b81318ea0>}'
+  - event_type: tool_call
+    data:
+      tool_name: HassSetPosition
+      tool_args:
+        position: 50
+        name: Irrigation Valve
+        domain:
+        - valve
+  tries: 0

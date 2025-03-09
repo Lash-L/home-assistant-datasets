@@ -27,7 +27,7 @@ $ uv pip install -e /workspaces/core
 
 ## Synthetic Home Custom Component (required)
 
-You will need the [synthetic-home custom component](https://github.com/allenporter/synthetic-home)
+You will need the [synthetic-home custom component](https://github.com/allenporter/home-assistant-synthetic-home)
 and you can either install it in a separate directory like this:
 
 ```bash
@@ -64,7 +64,7 @@ model. Here is an example of addint an additional ollama model:
 ### Scape
 
 You can scrape the model by running the `collect` command which will invoke
-the onversation agent, using pytest. This loads the input `$DATASET`,
+the conversation agent, using pytest. This loads the input `$DATASET`,
 scrapes the model `$MODEL`, and the output to `$OUTPUT_DIR`.
 
 Common datasets to evaluate against are `assist`, `assist-mini`, and `intents`.
@@ -76,7 +76,7 @@ $ OUTPUT_DIR="reports/assist/2024.8.0b"  # Output based on home assistant versio
 $ home-assistant-datasets assist collect --models=${MODEL} --dataset=${DATASET} --model_output_dir=${OUTPUT_DIR}
 ```
 
-If you don't know the homeassistnat version, you can run `uv pip freeze | grep "^homeassistant=="` to find out. See `home-assistant-datasets assist collect --help` for options to control pytest such as running a single test.
+If you don't know the homeassistant version, you can run `uv pip freeze | grep "^homeassistant=="` to find out. See `home-assistant-datasets assist collect --help` for options to control pytest such as running a single test.
 
 ### Evaluate
 
@@ -86,7 +86,6 @@ a list of the wins and losses for manual inspection.
 ```bash
 $ home-assistant-datasets assist eval --model_output_dir=${OUTPUT_DIR} --output_type=csv > ${OUTPUT_DIR}/report.csv
 ```
-
 ### Leaderboard
 
 The leaderboard is generated from all of the model eval results checked into

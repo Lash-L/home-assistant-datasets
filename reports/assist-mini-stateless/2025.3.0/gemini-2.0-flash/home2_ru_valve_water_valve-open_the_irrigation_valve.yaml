@@ -1,0 +1,95 @@
+---
+uuid: 44745cab-d70d-40dd-a55c-04751151d410
+task_id: home2_ru_valve_water_valve-open_the_irrigation_valve
+model_id: null
+category: valve
+task:
+  input_text: open the irrigation valve
+  expect_changes:
+    valve.irrigation_valve:
+      state: open
+      attributes:
+        current_position: 100
+response: Which area is the irrigation valve in?
+context:
+  unexpected_states:
+    valve.irrigation_valve:
+      expected:
+        current_position: 100
+        state: open
+      got:
+        current_position: 0
+        state: closed
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: open the irrigation valve
+      context:
+        id: 01JNWDYVF51TE1X1F5F9K0N5WX
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          Current time is 19:07:43. Today's date is 2025-03-08.
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          An overview of the areas and the devices in this smart home:
+          - names: Irrigation Valve
+            domain: valve
+            areas: Front yard
+          - names: Irrigation Valve Meter-reading
+            domain: sensor
+            areas: Front yard
+          - names: Irrigation Valve Battery
+            domain: sensor
+            areas: Front yard
+      - role: user
+        content: open the irrigation valve
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: Which area is the irrigation valve in?
+        tool_calls: null
+      tools:
+      - name: HassTurnOn
+        description: Turns on/opens a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''tv'', ''speaker'', ''receiver'', ''outlet'', ''switch''])],
+          msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window'', ''tv'', ''speaker'', ''receiver'', ''outlet'', ''switch''])],
+          msg=None)}'
+      - name: HassSetPosition
+        description: Sets the position of a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7f9b7ec9d4e0>, ''domain'': All(<function ensure_list at 0x7f9b8130b7e0>,
+          [<function string at 0x7f9b81318ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7f9b8130b7e0>, [In([''water'', ''gas'', ''awning'', ''blind'',
+          ''curtain'', ''damper'', ''door'', ''garage'', ''gate'', ''shade'', ''shutter'',
+          ''window''])], msg=None), ''position'': All(Coerce(int, msg=None), Range(min=0,
+          max=100, min_included=True, max_included=True, msg=None), msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x7f9b81318ea0>}'
+  tries: 0

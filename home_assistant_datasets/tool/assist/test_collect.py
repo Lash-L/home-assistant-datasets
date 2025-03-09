@@ -72,6 +72,10 @@ async def test_assist_actions(
         try:
             async with asyncio.timeout(TIMEOUT):
                 response = await agent.async_process(hass, text)
+                if "429 Error sending message" in response:
+                    assert False
+                # print(response)
+                # assert False
         except (HomeAssistantError, TypeError, json.JSONDecodeError) as err:
             response = str(err)
         except (TimeoutError, asyncio.CancelledError):

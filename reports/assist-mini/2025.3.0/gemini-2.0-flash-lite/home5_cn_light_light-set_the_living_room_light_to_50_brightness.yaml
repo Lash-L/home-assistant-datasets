@@ -1,0 +1,135 @@
+---
+uuid: b6947ba3-afd1-4e34-9be6-620d6c622992
+task_id: home5_cn_light_light-set_the_living_room_light_to_50_brightness
+model_id: null
+category: light
+task:
+  input_text: Set the living room light to 50% brightness
+  expect_changes:
+    light.living_room_light:
+      state: 'on'
+      attributes:
+        brightness: 128
+        color_mode: brightness
+response: I am sorry, I cannot fulfill this request. There was an error when setting
+  the brightness of the Living Room Light.
+context:
+  unexpected_states:
+    light.living_room_light:
+      expected:
+        brightness: 128
+        state: 'on'
+        color_mode: brightness
+      got:
+        brightness: null
+        state: 'off'
+        color_mode: null
+  conversation_trace:
+  - event_type: async_process
+    data:
+      text: Set the living room light to 50% brightness
+      context:
+        id: 01JNWCJTT9NP6DGDNR0H2T08QR
+        parent_id: null
+        user_id: null
+      conversation_id: null
+      device_id: null
+      language: en
+      agent_id: conversation.mock_title
+      extra_system_prompt: null
+  - event_type: agent_detail
+    data:
+      messages:
+      - role: system
+        content: |
+          Current time is 18:43:41. Today's date is 2025-03-08.
+          You are a voice assistant for Home Assistant.
+          Answer questions about the world truthfully.
+          Answer in plain text. Keep it simple and to the point.
+          When controlling Home Assistant always call the intent tools. Use HassTurnOn to lock and HassTurnOff to unlock a lock. When controlling a device, prefer passing just name and domain. When controlling an area, prefer passing just area name and domain.
+          When a user asks to turn on all devices of a specific type, ask user to specify an area, unless there is only one device of that type.
+          This device is not able to start timers.
+          An overview of the areas and the devices in this smart home:
+          - names: Living Room Light
+            domain: light
+            state: 'off'
+            areas: Living Room
+            attributes:
+              brightness:
+          - names: Kitchenette Light
+            domain: light
+            state: 'off'
+            areas: Kitchenette
+          - names: Bedroom 1 Light
+            domain: light
+            state: 'off'
+            areas: Bedroom 1
+          - names: Bedroom 2 Light
+            domain: light
+            state: 'off'
+            areas: Bedroom 2
+          - names: Porch Light
+            domain: light
+            state: 'off'
+            areas: Front Porch
+      - role: user
+        content: Set the living room light to 50% brightness
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: ''
+        tool_calls:
+        - tool_name: HassLightSet
+          tool_args:
+            brightness: 128
+            name: Living Room Light
+          id: 01JNWCJVC3Q42V94SWDTBR23XT
+      - role: tool_result
+        agent_id: conversation.mock_title
+        tool_call_id: 01JNWCJVC3Q42V94SWDTBR23XT
+        tool_name: HassLightSet
+        tool_result:
+          error: InvalidSlotInfo
+          error_text: Received invalid slot info for HassLightSet
+      - role: assistant
+        agent_id: conversation.mock_title
+        content: I am sorry, I cannot fulfill this request. There was an error when
+          setting the brightness of the Living Room Light.
+        tool_calls: null
+      tools:
+      - name: HassTurnOn
+        description: Turns on/opens a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7fc0bb8354e0>, ''domain'': All(<function ensure_list at 0x7fc0bde677e0>,
+          [<function string at 0x7fc0bde74ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7fc0bde677e0>, [In([''tv'', ''speaker'', ''receiver'',
+          ''outlet'', ''switch'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas''])], msg=None)}'
+      - name: HassTurnOff
+        description: Turns off/closes a device or entity
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7fc0bb8354e0>, ''domain'': All(<function ensure_list at 0x7fc0bde677e0>,
+          [<function string at 0x7fc0bde74ea0>], msg=None), ''device_class'': All(<function
+          ensure_list at 0x7fc0bde677e0>, [In([''tv'', ''speaker'', ''receiver'',
+          ''outlet'', ''switch'', ''awning'', ''blind'', ''curtain'', ''damper'',
+          ''door'', ''garage'', ''gate'', ''shade'', ''shutter'', ''window'', ''water'',
+          ''gas''])], msg=None)}'
+      - name: HassCancelAllTimers
+        description: Cancels all timers
+        parameters: '{''area'': <function string at 0x7fc0bde74ea0>}'
+      - name: HassLightSet
+        description: Sets the brightness or color of a light
+        parameters: '{Any(''name'', ''area'', ''floor'', msg=None): <function non_empty_string
+          at 0x7fc0bb8354e0>, ''domain'': All(<function ensure_list at 0x7fc0bde677e0>,
+          [<function string at 0x7fc0bde74ea0>], msg=None), ''color'': <function color_name_to_rgb
+          at 0x7fc0bba90a40>, ''temperature'': All(Coerce(int, msg=None), Range(min=0,
+          max=None, min_included=True, max_included=True, msg=None), msg=None), ''brightness'':
+          All(Coerce(int, msg=None), Range(min=0, max=100, min_included=True, max_included=True,
+          msg=None), msg=None)}'
+  - event_type: tool_call
+    data:
+      tool_name: HassLightSet
+      tool_args:
+        brightness: 128
+        name: Living Room Light
+  tries: 0

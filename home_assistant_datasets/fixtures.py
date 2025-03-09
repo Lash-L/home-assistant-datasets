@@ -201,6 +201,7 @@ class ConversationAgent:
 
     async def async_process(self, hass: HomeAssistant, text: str) -> str:
         """Process a text input and return the response."""
+        print(text)
         service_response = await hass.services.async_call(
             "conversation",
             "process",
@@ -210,7 +211,8 @@ class ConversationAgent:
         )
         assert service_response
         response = service_response["response"]
-        return str(response["speech"]["plain"]["speech"])  # type: ignore[call-overload, index]
+        # type: ignore[call-overload, index]
+        return str(response["speech"]["plain"]["speech"])
 
 
 @pytest.fixture(name="conversation_agent_id")

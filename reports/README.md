@@ -15,6 +15,7 @@
 | gemini-2.0-flash | $${\color{teal}91.8\\% \space\color{gray}\tiny{\textsf{(CI: 7.7, 2025.2.4)}}}$$ | $${\color{green}95.9\\% \space\color{gray}\tiny{\textsf{(CI: 5.5, 2025.2.0b)}}}$$ | $${\color{yellowgreen}63.7\\% \space\color{gray}\tiny{\textsf{(CI: 10.5, 2025.2.4)}}}$$ | $${\color{yellowgreen}68.3\\% \space\color{gray}\tiny{\textsf{(CI: 11.8, 2025.3.0b)}}}$$ | $${\color{olive}80.3\\% \space\color{gray}\tiny{\textsf{(CI: 5.8, avg)}}}$$ |
 | llama3.1 | $${\color{olive}83.7\\% \space\color{gray}\tiny{\textsf{(CI: 10.3, 2024.8.0b0)}}}$$ |  | $${\color{yellowgreen}66.2\\% \space\color{gray}\tiny{\textsf{(CI: 10.4, 2024.9.0dev)}}}$$ |  | $${\color{greenyellow}72.9\\% \space\color{gray}\tiny{\textsf{(CI: 7.7, avg)}}}$$ |
 | assist-llm | $${\color{olive}81.6\\% \space\color{gray}\tiny{\textsf{(CI: 10.8, 2024.9.0dev)}}}$$ |  | $${\color{yellowgreen}67.5\\% \space\color{gray}\tiny{\textsf{(CI: 10.3, 2024.9.0dev)}}}$$ |  | $${\color{greenyellow}72.9\\% \space\color{gray}\tiny{\textsf{(CI: 7.7, avg)}}}$$ |
+| gemini-2.0-flash-lite | $${\color{greenyellow}79.6\\% \space\color{gray}\tiny{\textsf{(CI: 11.3, 2025.3.0)}}}$$ | $${\color{olive}81.6\\% \space\color{gray}\tiny{\textsf{(CI: 10.8, 2025.3.0)}}}$$ | $${\color{yellowgreen}61.3\\% \space\color{gray}\tiny{\textsf{(CI: 10.7, 2025.3.0)}}}$$ |  | $${\color{greenyellow}71.9\\% \space\color{gray}\tiny{\textsf{(CI: 6.6, avg)}}}$$ |
 | llama3.2-3b | $${\color{olive}81.6\\% \space\color{gray}\tiny{\textsf{(CI: 10.8, 2024.9.2)}}}$$ |  | $${\color{yellowgreen}62.5\\% \space\color{gray}\tiny{\textsf{(CI: 10.6, 2024.9.2)}}}$$ |  | $${\color{yellowgreen}69.8\\% \space\color{gray}\tiny{\textsf{(CI: 7.9, avg)}}}$$ |
 | xlam-7b | $${\color{olive}85.7\\% \space\color{gray}\tiny{\textsf{(CI: 9.8, 2024.8.0b0)}}}$$ |  | $${\color{gray}51.2\\% \space\color{gray}\tiny{\textsf{(CI: 11.0, 2024.9.0dev)}}}$$ |  | $${\color{yellowgreen}64.3\\% \space\color{gray}\tiny{\textsf{(CI: 8.3, avg)}}}$$ |
 | functionary-small-v2.5 | $${\color{yellowgreen}63.3\\% \space\color{gray}\tiny{\textsf{(CI: 13.5, 2024.8.0dev)}}}$$ |  | $${\color{gray}56.2\\% \space\color{gray}\tiny{\textsf{(CI: 10.9, 2024.7.0)}}}$$ |  | $${\color{gray}58.9\\% \space\color{gray}\tiny{\textsf{(CI: 8.5, avg)}}}$$ |
@@ -106,23 +107,24 @@ config:
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
-            plotColorPalette: "#4285f4, #0f9d58, #f4b400, #ea4335, #ff6d01, #46bdc6, #1155cc, #d5a6bd, #674ea7, #4285f4"
+            plotColorPalette: "#4285f4, #0f9d58, #f4b400, #ea4335, #ff6d01, #46bdc6, #1155cc, #d5a6bd, #674ea7, #0f9d58, #4285f4"
 
 ---
 xychart-beta
   title "assist-mini-stateless"
-  x-axis "Model" [claude-3-5-sonnet, claude-3-haiku, gemini-1.5-flash, gpt-4o-mini, gpt-4o, gpt-3.5, claude-3-5-haiku, qwen2.5, gemini-2.0-flash, .]
+  x-axis "Model" [claude-3-5-sonnet, claude-3-haiku, gemini-1.5-flash, gpt-4o-mini, gpt-4o, gpt-3.5, claude-3-5-haiku, qwen2.5, gemini-2.0-flash, gemini-2.0-flash-lite, .]
   y-axis "Score" 1 --> 100
-  bar [98.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 87.8, 0.0, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 79.6, 0.0, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 83.7, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 95.9, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
+  bar [98.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 87.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 93.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 79.6, 0.0, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 83.7, 0.0, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 95.9, 0.0, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 81.6, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
 ```
 
 ### assist
@@ -154,7 +156,7 @@ config:
 ---
 xychart-beta
   title "assist"
-  x-axis "Model" [claude-3-haiku, gemini-1.5-flash, gpt-4o-mini, llama3.3, llama3.3-awq, gpt-4o, gpt-3.5, qwen2.5, gemini-2.0-flash, llama3.1, assist-llm, llama3.2-3b, .]
+  x-axis "Model" [claude-3-haiku, gemini-1.5-flash, gpt-4o-mini, llama3.3, llama3.3-awq, gpt-4o, gpt-3.5, qwen2.5, gemini-2.0-flash, llama3.1, assist-llm, gemini-2.0-flash-lite, .]
   y-axis "Score" 1 --> 100
   bar [88.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
   bar [0.0, 91.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -167,7 +169,7 @@ xychart-beta
   bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 63.7, 0.0, 0.0, 0.0, 0.0]
   bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 66.2, 0.0, 0.0, 0.0]
   bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 67.5, 0.0, 0.0]
-  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 62.5, 0.0]
+  bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 61.3, 0.0]
   bar [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0]
 ```
 
@@ -261,6 +263,14 @@ More information:
 ### gemini-2.0-flash
 
 Google Generative AI integration using gemini flash (v2.0)
+
+More information:
+- https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/
+
+
+### gemini-2.0-flash-lite
+
+Google Generative AI integration using gemini flash lite (v2.0) (exp)
 
 More information:
 - https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/
