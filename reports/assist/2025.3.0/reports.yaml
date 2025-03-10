@@ -1,0 +1,6 @@
+---
+- model_id: gemini-2.0-flash
+  good_percent: 75.0%
+  good: 60
+  total: 80
+
